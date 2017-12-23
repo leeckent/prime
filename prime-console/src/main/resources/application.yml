@@ -1,0 +1,56 @@
+###################  creep配置  ###################
+creep:
+  swagger-open: true #是否开启swagger (true/false)
+  session-open: false #是否开启session超时验证（受影响的类SessionTimeoutInterceptor） (true/false)
+  muti-datasource-open: true #是否开启多数据源(true/false)
+  spring-session-open: false #是否开启spring session,如果是多机环境需要开启(true/false)
+  session-invalidate-time: 1800 #session失效时间(只在单机环境下生效，多机环境在SpringSessionConfig类中配置) 单位：秒
+  session-validation-interval: 900 #多久检测一次失效的session(只在单机环境下生效) 单位：秒
+
+###################  MyBatis 配置  ###################
+mybatis:
+    type-aliases-package: com.feizhou.creep.module.system.model,com.feizhou.creep.module.prime.model
+    mapper-locations: classpath*:/creep/module/**/*.xml
+
+###################  MyBatis 分页插件配置  ###################
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+###################  beetl配置  ###################
+beetl:
+  delimiter-statement-start: \@   #开始结束标签(yaml不允许@开头)
+  delimiter-statement-end: null
+  resource-tagroot: common/tags   #自定义标签文件Root目录和后缀
+  resource-tagsuffix: tag
+  resource-auto-check: true #是否检测文件变化,开发用true合适，但线上要改为false
+
+gen:
+  schema: prime
+  path: prime/src/main/resources/template
+
+###################  spring配置  ###################
+spring:
+  profiles:
+    active: dev
+  mvc:
+    static-path-pattern: /static/**
+    view:
+      prefix: /WEB-INF/view
+  http:
+    converters:
+      preferred-json-mapper: fastjson
+    multipart:
+      max-request-size: 100MB #最大请求大小
+      max-file-size: 100MB #最大文件大小
+  devtools:
+    restart:
+      enabled: true #是否开启开发者工具（true/false）
+      additional-paths: src/main/java
+      exclude: static/**,WEB-INF/view/**
+  aop:
+    proxy-target-class: true
+
+---

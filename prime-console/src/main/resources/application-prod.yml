@@ -1,0 +1,29 @@
+###################  项目启动端口  ###################
+server:
+  port: 8099
+
+###################  creep配置  ###################
+creep:
+  file-upload-path: C:/RSCRM/files
+
+spring:
+  datasource:
+      url: jdbc:mysql://localhost:3306/rscrm?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      username: rscrm
+      password: Rscrm@2017*2018
+      filters: log4j,wall,mergeStat
+
+#多数据源
+quartz:
+  datasource:
+      url: jdbc:mysql://localhost:3306/rscrm_quartz?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      username: rscrm
+      password: Rscrm@2017*2018
+
+logging:
+  level.root: info
+  level.cn.afterturn: info
+  level.org.springframework: info
+  level.org.apache.ibatis: info
+  path: C:/RSCRM/logs/logs
+  file: creep-rscrm.log

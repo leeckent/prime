@@ -1,0 +1,30 @@
+###################  项目启动端口  ###################
+server:
+  port: 8081
+
+###################  creep配置  ###################
+creep:
+  file-upload-path: /Users/lee/down/files
+
+spring:
+  profiles: dev
+  datasource:
+      url: jdbc:mysql://wwwgtocom.mysql.rds.aliyuncs.com:3306/prime?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      username: fzdbadminroot
+      password: GoFZTECH2016
+      filters: log4j,wall,mergeStat
+
+#多数据源
+quartz:
+  datasource:
+      url: jdbc:mysql://wwwgtocom.mysql.rds.aliyuncs.com:3306/prime_quartz?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      username: fzdbadminroot
+      password: GoFZTECH2016
+
+logging:
+  level.root: debug
+  level.cn.afterturn: debug
+  level.org.springframework: debug
+  level.org.apache.ibatis: debug
+  path: /Users/lee/down/logs
+  file: creep-prime.log
